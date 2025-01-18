@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-files
-          path: build/plugin/LEVEL3_artefacts/Release/VST3
+          path: build/LEVEL3_artefacts/Release/VST3
