@@ -27,6 +27,11 @@ private:
 
   juce::WebBrowserComponent webBrowser{
       juce::WebBrowserComponent::Options{}
+          .withBackend(WebBrowserComponent::Options::Backend::webview2)
+          .withWinWebView2Options(
+              WebBrowserComponent::Options::WinWebView2{}.withUserDataFolder(
+                  File::getSpecialLocation(
+                      File::SpecialLocationType::tempDirectory)))
           .withNativeIntegrationEnabled(true)
           .withOptionsFrom(clipThresholdRelay)
           .withOptionsFrom(saturationThresholdRelay)
