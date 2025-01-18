@@ -14,8 +14,10 @@ jobs:
         run: choco install ninja
 
       - name: Install WebView2 SDK
+        shell: powershell
         run: |
-          nuget install Microsoft.Web.WebView2 -Version 1.0.1901.177 -OutputDirectory webview2
+          Register-PackageSource -provider NuGet -name nugetRepository -location https://www.nuget.org/api/v2
+          Install-Package Microsoft.Web.WebView2 -Scope CurrentUser -RequiredVersion 1.0.1901.177 -Source nugetRepository -Force
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,7 +28,7 @@ jobs:
         uses: mozilla-actions/sccache-action@v0.0.6
 
       - name: Configure
-        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DJUCE_WEBVIEW2_PACKAGE_LOCATION="${{ github.workspace }}\webview2\Microsoft.Web.WebView2.1.0.1901.177"
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
         run: cmake --build build --config Release --parallel 4
