@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  background-color: hsl(0, 0%, 90%);
+}
+
+canvas {
+  display: block;
+}
