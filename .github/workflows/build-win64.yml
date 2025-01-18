@@ -26,7 +26,7 @@ jobs:
         uses: mozilla-actions/sccache-action@v0.0.6
 
       - name: Configure
-        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache -DJUCE_WEBVIEW2_PACKAGE_LOCATION="${{ github.workspace }}\webview2\Microsoft.Web.WebView2.1.0.1901.177
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache -DJUCE_WEBVIEW2_PACKAGE_LOCATION="${{ github.workspace }}\webview2\Microsoft.Web.WebView2.1.0.1901.177"
 
       - name: Build
         run: cmake --build build --config Release --parallel 4
